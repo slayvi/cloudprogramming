@@ -2,7 +2,7 @@ from flask import Flask, request, render_template
 import pandas as pd
 import joblib
 from model import pklfilename
-
+# susanli2016
 # Declare a Flask app
 app = Flask(__name__)
 
@@ -16,11 +16,12 @@ def main():
         clf = joblib.load(pklfilename)
 
         # Get values through input bars
+        mass = request.form.get("mass")
+        width = request.form.get("width")
         height = request.form.get("height")
-        weight = request.form.get("weight")
-        
+
         # Put inputs to dataframe
-        X = pd.DataFrame([[height, weight]], columns = ["Height", "Weight"])
+        X = pd.DataFrame([[mass, width, height]], columns = ["mass", "width", "height"])
         
         # Get prediction
         prediction = clf.predict(X)[0]
