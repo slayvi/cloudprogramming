@@ -3,7 +3,5 @@ Infrastructure as a Code (IaC) for deploying a Machine Learning Model on Amazon 
 
 TODO
 
-### delete repo:
-~~~
-aws ecr delete-repository --repository-name ecrrepomain --force
-~~~
+### start docker
+### linux
