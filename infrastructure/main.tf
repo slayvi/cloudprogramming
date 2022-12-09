@@ -13,9 +13,6 @@ terraform {
 }
 
 
-
-
-
 provider "aws" {
   region = "eu-west-1"
 
@@ -35,7 +32,7 @@ resource "docker_image" "mlapp1" {
   name = "mlapp1"
   build {
     path = "../src"
-    #tag  = ["mlapp:develop"]
+    #tag  = ["mlapp:latest"]
     build_arg = {
       foo : "mlapp1"
     }
@@ -55,27 +52,85 @@ variable "region" {
 }
 
 
-# Build Docker image and push to ECR from folder: ./example-service-directory
-module "ecr_docker_build" {
-  source = "github.com/onnimonni/terraform-ecr-docker-build-module"
+# # Build Docker image and push to ECR from folder: ./example-service-directory
+# module "ecr_docker_build" {
+#   source = "github.com/onnimonni/terraform-ecr-docker-build-module"
 
-  # Absolute path into the service which needs to be build
-  dockerfile_folder = "../src"
-  # Tag for the builded Docker image (Defaults to 'latest')
-  docker_image_tag = "development"
+#   # Absolute path into the service which needs to be build
+#   dockerfile_folder = "../src"
+#   # Tag for the builded Docker image (Defaults to 'latest')
+#   docker_image_tag = "development"
   
-  # The region which we will log into with aws-cli
-  aws_region = var.region
+#   # The region which we will log into with aws-cli
+#   aws_region = var.region
 
-  # ECR repository where we can push
-  ecr_repository_url = "${var.benutzernummer123}.dkr.ecr.${var.region}.amazonaws.com/${aws_ecr_repository.main.name}"
+#   # ECR repository where we can push
+#   ecr_repository_url = "${var.benutzernummer123}.dkr.ecr.${var.region}.amazonaws.com/${aws_ecr_repository.main.name}"
+# }
+
+# resource "docker_image" "mlappimage" {
+#   name = "mlappimage"
+#   build {
+#     path = "../src"
+#     tag  = ["mlappimage:latest"]
+#     build_arg = {
+#       foo : "mlappimage"
+#     }
+#     label = {
+#       author : "Slavka"
+#     }
+#   }
+# }
+
+# # Start a container
+# resource "docker_container" "mlappcontainer" {
+#   name  = "ecrrepomain"
+#   image = docker_image.mlappimage.image_id
+# }
+
+variable path {
+  default = "."
+  description = "path to build.sh"
 }
+
+# # Checks if build folder has changed
+# data "external" "build_folder" {
+#   program = ["${path.module}/bin/folder_contents.sh", "../src"]
+# }
+
+
+resource "null_resource" "build_and_push" {
+  # triggers = {
+  #   build_folder_content_md5 = data.external.build_folder.result.md5
+  # }
+
+  # See build.sh for more details
+  provisioner "local-exec" {
+    command = "${var.path}/bin/build.sh ${var.dockerfile_folder} ${aws_ecr_repository.main.repository_url}:${var.docker_image_tag} ${var.region}"
+  }
+}
+
+
+variable "dockerfile_folder" {
+  type        = string
+  description = "This is the folder which contains the Dockerfile"
+  default = "../src"
+}
+variable "docker_image_tag" {
+  type        = string
+  description = "This is the tag which will be used for the image that you created"
+  default     = "latest"
+}
+
+
+
 
 
 
 resource "aws_ecr_repository" "main" {
   name                 = "ecrrepomain"
   image_tag_mutability = "MUTABLE"
+  force_delete = true 
 }
 
 
@@ -206,7 +261,7 @@ resource "aws_ecs_task_definition" "hello_world" {
 
   container_definitions = jsonencode([{
     name        = "hello-world-app"
-    image       = "${aws_ecr_repository.main.repository_url}:development" 
+    image       = "${aws_ecr_repository.main.repository_url}:latest" 
     essential   = true
     portMappings = [{
       protocol      = "tcp"
