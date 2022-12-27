@@ -31,7 +31,7 @@ aws configure
 ```
 Insert your AWS Access Key ID and AWS Secret Access Key. 
 
-Then run the following commands from the /infrastructure directory:
+Then run the following commands from the *infrastructure/* directory:
 
 ```
 terraform init
