@@ -4,6 +4,8 @@ Deploying a Machine Learning Model with Terraform as Infrastructure as a Code (I
 
 
 ## Prerequieries
+Before you can use the magic of IaC, your computer must meet the following requirements:
+
 1. Linux Distribution // Windows Subsystem for Linux (WSL)
 First, make sure you have a Linux Distribution to run the IaC template. If you're working with Windows, check the [Documentation on WSL](https://learn.microsoft.com/en-us/windows/wsl/) to set up a WSL.
 
@@ -17,7 +19,19 @@ Next, you need to make sure Terraform runs on your PC. For downloading and setti
 4. Docker 
 Last, you will need Docker on your PC. For download and documentation, please check the [official website](https://www.docker.com/).
 
-After following the above mentioned steps, you're good to go to download and run the terraform script. 
+After following the above mentioned steps, you're good to go and run the terraform script.
+
+You can get the code by either downloading the .zip-File or clone it via the command promt. For more information about the later please check the [github docs](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository).
+
+
+
+
+##  The Structure
+
+The code is structured as following:
+
+
+
 
 
 ## 
