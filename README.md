@@ -17,7 +17,7 @@ Make sure to also download the AWS Command Line Interface (AWS CLI).
 Next, you need to make sure Terraform runs on your PC. For downloading and setting up the tool please visit the [official website](https://www.terraform.io/).
 
 4. Docker 
-Last, you will need Docker on your PC. For download and documentation, please check the [official website](https://www.docker.com/).
+Last, you will need Docker on your PC. For download and documentation, please check the [official website](https://www.docker.com/). Make sure Docker is running when apply the IaC to AWS.
 
 After following the above mentioned steps, you're good to go and run the terraform script.
 
