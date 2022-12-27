@@ -59,3 +59,5 @@ The code is structured as following:
 ## 
 
 TODO
+
+terraform apply -var-file="variables.tfvars"
