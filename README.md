@@ -37,10 +37,12 @@ Then run the following commands from the *infrastructure/* directory:
 terraform init
 ```
 
+If you want to see before hand what will be deployed, use the following command: 
 ```
 terraform plan
 ```
 
+To apply the infrastructure to AWS, use the following command:
 ```
 terraform apply
 ```
@@ -57,10 +59,3 @@ The code is structured as following:
 ## 
 
 TODO
-
-### start docker
-### linux
-
-
-$ terraform plan -target=aws_s3_bucket.backend -out=/tmp/tfplan
-$ terraform apply /tmp/tfplan
