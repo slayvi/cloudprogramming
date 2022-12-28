@@ -47,17 +47,14 @@ To apply the infrastructure to AWS, use the following command:
 terraform apply
 ```
 
-
-##  The Structure
-
-The code is structured as following:
-![](structure.png)
-
-
-
 ## The Machine Learning Application
 
 The ML-app is merely an example flask application, with use of the Fruit Dataset of [Prof. Iain Murray](https://homepages.inf.ed.ac.uk/imurray2/), retrieved from [this](https://github.com/susanli2016/Machine-Learning-with-Python/blob/master/fruit_data_with_colors.txt) github-repo.
 
 It is build with the Flask Library and can be accessed with declaring a Port. The Model predicts the fruit type as shown in the picture below:
 ![](gifcp.gif)
+
+
+## Graphical Representation of the Infrastructure 
+
+![](infrastructure.png)
