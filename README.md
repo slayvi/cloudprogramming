@@ -52,12 +52,39 @@ terraform apply
 
 The code is structured as following:
 
+.
+¦   
++---application
+¦   ¦   Dockerfile
+¦   ¦   requirements.txt
+¦   ¦   
+¦   +---app
+¦       ¦   clf.pkl
+¦       ¦   data.csv
+¦       ¦   flaskapp.py
+¦       ¦   model.py
+¦       ¦   
+¦       +---templates
+¦               overlay.html
+¦               
++---infrastructure
+        alb.tf
+        autoscaling.tf
+        build.sh
+        docker.tf
+        fargate.tf
+        iam.tf
+        main.tf
+        network.tf
+        outputs.tf
+        variables.tf
+        
 
 
+
+## The Machine Learning Application
+
+The ML-app is merely an example flask application, with use of the Fruit Dataset of [Prof. Iain Murray](https://homepages.inf.ed.ac.uk/imurray2/), retrieved from [this](https://github.com/susanli2016/Machine-Learning-with-Python/blob/master/fruit_data_with_colors.txt) github-repo.
+
+It is build with the Flask Library and can be accessed with declaring a Port. The Model predicts the fruit type as shown in the picture below:
 ![](gifcp.gif)
-
-## 
-
-TODO
-
-terraform apply -var-file="variables.tfvars"
