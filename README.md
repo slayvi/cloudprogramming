@@ -24,15 +24,15 @@ After following the above mentioned steps, you're good to go and run the terrafo
 You can get the code by either downloading the .zip-File or clone it via the command promt. For more information about the later please check the [github docs](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository).
 
 
-## 
+## Getting Started
 
+Before you can upload your infrastructure to AWS, you'll need to login in the console with
 ```
 aws configure
 ```
 Insert your AWS Access Key ID and AWS Secret Access Key. 
 
-Then run the following commands from the *infrastructure/* directory:
-
+Then run the following commands in the *infrastructure/* directory:
 ```
 terraform init
 ```
