@@ -51,34 +51,7 @@ terraform apply
 ##  The Structure
 
 The code is structured as following:
-
-. 
-¦   
-+---application
-¦   ¦   Dockerfile
-¦   ¦   requirements.txt
-¦   ¦   
-¦   +---app
-¦       ¦   clf.pkl
-¦       ¦   data.csv
-¦       ¦   flaskapp.py
-¦       ¦   model.py
-¦       ¦   
-¦       +---templates
-¦               overlay.html
-¦               
-+---infrastructure
-        alb.tf
-        autoscaling.tf
-        build.sh
-        docker.tf
-        fargate.tf
-        iam.tf
-        main.tf
-        network.tf
-        outputs.tf
-        variables.tf
-        
+![](structure.png)
 
 
 
