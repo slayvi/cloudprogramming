@@ -54,7 +54,7 @@ The code is structured as following:
 
 
 
-
+![](gifcp.gif)
 
 ## 
 
