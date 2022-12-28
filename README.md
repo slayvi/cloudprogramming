@@ -1,6 +1,5 @@
-# Cloud Programming DLBSEPCP01_E
-Deploying a Machine Learning Model with Terraform as Infrastructure as a Code (IaC) on Amazon Web Services (AWS)
-
+# Cloud Programming 
+Deploying a Machine Learning Model with Terraform as Infrastructure as a Code (IaC) on Amazon Web Services (AWS) for the **Cloud Programming** course of my studies at the International University.
 
 
 ## Prerequieries
