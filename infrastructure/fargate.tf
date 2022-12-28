@@ -62,7 +62,7 @@ resource "aws_ecs_service" "mlservice" {
   name            = "ml-service"
   cluster         = aws_ecs_cluster.main.id
   task_definition = aws_ecs_task_definition.ml_task_def.arn
-  desired_count   = 2
+  desired_count   = var.app_count
   launch_type     = "FARGATE"
 
 # Assign to security group and private subnets:

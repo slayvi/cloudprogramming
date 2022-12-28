@@ -17,7 +17,7 @@ variable "vpc_cidr" {
 variable "app_count" {
   description = "Numbers of apps running at the same time"
   type = number
-  default = 2
+  default = 1
 }
 
 
