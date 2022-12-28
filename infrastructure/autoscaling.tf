@@ -1,4 +1,4 @@
-# Defining Autoscaling with a maximum of 3 Tasks:
+# Defining Autoscaling with a maximum of 2 Tasks:
 resource "aws_appautoscaling_target" "dev_to_target" {
   max_capacity = 2
   min_capacity = 1
