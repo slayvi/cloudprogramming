@@ -57,7 +57,7 @@ resource "aws_route" "internet_access" {
 
 # Create Elastic IP:
 resource "aws_eip" "gateway" {
-  count      = 2            # warum 2??
+  count      = 2
   vpc        = true
   depends_on = [aws_internet_gateway.gateway]
 }

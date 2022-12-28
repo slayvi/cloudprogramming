@@ -6,6 +6,7 @@ resource "docker_image" "mlapp" {
   }
 }
  
+ 
 # Build and push Docker Image to AWS with Shellscript
 resource "null_resource" "build_and_push" {
 

@@ -1,16 +1,17 @@
+# use small python image:
 FROM python:3.8-slim
 
-# set a directory for the app
+# set a directory for the app:
 WORKDIR /usr/application/app
 
-# copy all the files to the container
+# copy all the files to the container:
 COPY . .
 
-# install dependencies
+# install dependencies:
 RUN pip install --no-cache-dir -r requirements.txt
 
-# tell the port number the container should expose
+# tell the port number the container should expose:
 EXPOSE 5000
 
-# run the command
+# run the command:
 CMD ["python", "./app/flaskapp.py"]

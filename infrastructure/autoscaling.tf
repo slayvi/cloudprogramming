@@ -1,11 +1,12 @@
 # Defining Autoscaling with a maximum of 3 Tasks:
 resource "aws_appautoscaling_target" "dev_to_target" {
-  max_capacity = 3
+  max_capacity = 2
   min_capacity = 1
   resource_id = "service/${aws_ecs_cluster.main.name}/${aws_ecs_service.mlservice.name}"
   scalable_dimension = "ecs:service:DesiredCount"
   service_namespace = "ecs"
 }
+
 
 # Defining Autoscaling Policy regarding the used CPU:
 resource "aws_appautoscaling_policy" "dev_to_cpu" {

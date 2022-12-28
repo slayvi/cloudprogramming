@@ -47,3 +47,40 @@ variable "cluster_name" {
   type        = string
   description = "The name of an ECS cluster"
 }
+
+
+variable "cpu" {
+  description = "CPU the Fargate task should run with."
+  type = number
+  default = 1024
+}
+
+
+variable "memory" {
+  description = "Memory the Fargate task should run with."
+  type = number
+  default = 2048
+}
+
+
+variable "ecr_name" {
+  description = "Name of the Repository."
+  type = string 
+  default = "mlrepository"
+}
+
+
+variable "ecs_service" {
+  description = "Name of ECS Service."
+  type = string 
+  default = "ml-service"
+  
+}
+
+variable "container_name" {
+  description = "Name of the container."
+  type = string 
+  default = "ml-app"
+  
+}
+
