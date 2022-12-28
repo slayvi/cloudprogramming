@@ -6,7 +6,7 @@ Deploying a Machine Learning Model with Terraform as Infrastructure as a Code (I
 ## Prerequieries
 Before you can use the magic of IaC, your computer must meet the following requirements:
 
-1. Linux Distribution // Windows Subsystem for Linux (WSL)
+1. Linux Distribution // Windows Subsystem for Linux (WSL): <br /> 
 First, make sure you have a Linux Distribution to run the IaC template. If you're working with Windows, check the [Documentation on WSL](https://learn.microsoft.com/en-us/windows/wsl/) to set up a WSL.
 
 2. AWS Account 
