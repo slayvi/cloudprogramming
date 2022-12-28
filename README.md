@@ -5,17 +5,17 @@ Deploying a Machine Learning Model with Terraform as Infrastructure as a Code (I
 ## Prerequieries
 Before you can use the magic of IaC, your computer must meet the following requirements:
 
-**1. Linux Distribution // Windows Subsystem for Linux (WSL): <br /> **
+1. **Linux Distribution // Windows Subsystem for Linux (WSL)** <br /> 
 First, make sure you have a Linux Distribution to run the IaC template. If you're working with Windows, check the [Documentation on WSL](https://learn.microsoft.com/en-us/windows/wsl/) to set up a WSL.
 
-**2. AWS Account <br /> **
+2. **AWS Account** <br /> 
 You will have to create an account at AWS to use this template. For further information, please visit the [official AWS website](https://aws.amazon.com/).
 Make sure to also **download the AWS Command Line Interface (AWS CLI)** and **create an user in the Identity and Access Management (IAM)** with administrative access.
 
-**3. Terraform <br /> **
+3. **Terraform** <br /> 
 Next, you need to make sure Terraform runs on your PC. For downloading and setting up the tool please visit the [official website](https://www.terraform.io/).
 
-**4. Docker <br /> **
+4. **Docker** <br /> 
 Last, you will need Docker to run on your PC. For download and documentation, please check the [official website](https://www.docker.com/). Make sure Docker is running when apply the IaC to AWS.
 
 After following the above mentioned steps, you're good to go and run the terraform script.
