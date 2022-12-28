@@ -1,6 +1,0 @@
-joblib
-scikit-learn
-pandas
-flask
-
-#aws ecr delete-repository --repository-name ecrrepomain --force
