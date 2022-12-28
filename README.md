@@ -52,7 +52,7 @@ terraform apply
 
 The code is structured as following:
 
-.
+. 
 ¦   
 +---application
 ¦   ¦   Dockerfile
