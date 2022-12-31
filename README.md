@@ -16,7 +16,8 @@ Make sure to also **download the AWS Command Line Interface (AWS CLI)** and **cr
 Next, you need to make sure Terraform runs on your PC. For downloading and setting up the tool please visit the [official website](https://www.terraform.io/).
 
 4. **Docker Engine** <br /> 
-Last, you will need Docker Desktop to run on your PC. For download and documentation, please check the [official website](https://www.docker.com/). Make sure Docker is running when apply the IaC to AWS. If you are using a Linux Distribution you may run in an Permission Error - change the owner of the file /var/run/docker.sock to solve this one. 
+Last, you will need Docker Desktop to run on your PC. For download and documentation, please check the [official website](https://www.docker.com/). Make sure Docker is running when apply the IaC to AWS. <br />
+You may also need to register on [Docker Hub](https://hub.docker.com/).
 
 After following the above mentioned steps, you're good to go and run the terraform script.
 
@@ -64,3 +65,13 @@ The infrastructure after applying it to AWS will be like the following: <br />
 
 ### Tested OS
 The infrastructure was successfully tested with Windows 11 (WSL) and Fedora Linux 37 (Workstation Edition).
+
+**Troubleshooting** On Linux, you may run into some permission errors. What worked best for me is 
+1) Changing the owner of the file /var/run/docker.sock to my (non root) user.
+2) Generate a gpg key on [Docker Hub](https://hub.docker.com/).
+3) If you may still get an permission error, try the following commands: 
+''' 
+service docker stop
+rm ~/.docker/config.json
+service docker start 
+'''
