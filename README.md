@@ -70,8 +70,8 @@ The infrastructure was successfully tested with Windows 11 (WSL) and Fedora Linu
 1) Changing the owner of the file /var/run/docker.sock to my (non root) user.
 2) Generate a gpg key on [Docker Hub](https://hub.docker.com/).
 3) If you may still get an permission error, try the following commands: 
-''' 
+``` 
 service docker stop
 rm ~/.docker/config.json
 service docker start 
-'''
+```
