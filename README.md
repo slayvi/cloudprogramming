@@ -67,10 +67,10 @@ The infrastructure after applying it to AWS will be like the following: <br />
 The infrastructure was successfully tested with Windows 11 (WSL) and Fedora Linux 37 (Workstation Edition).
 
 ### Troubleshooting
-On Linux, you may run into some errors while setup the environment. What worked best for me is 
-1) Changing the owner of the file /var/run/docker.sock to my (non root) user.
+On Linux, you may run into some errors while setup the environment for Docker. What worked best for me is 
+1) Changing the owner of the docker.sock file.
 2) Generate a gpg key on [Docker Hub](https://hub.docker.com/).
-3) If you may still get an permission error, try the following commands: 
+3) If you still run into an error, try the following commands: 
 ``` 
 service docker stop
 rm ~/.docker/config.json
