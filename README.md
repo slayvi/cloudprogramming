@@ -15,8 +15,8 @@ Make sure to also **download the AWS Command Line Interface (AWS CLI)** and **cr
 3. **Terraform** <br /> 
 Next, you need to make sure Terraform runs on your PC. For downloading and setting up the tool please visit the [official website](https://www.terraform.io/).
 
-4. **Docker** <br /> 
-Last, you will need Docker to run on your PC. For download and documentation, please check the [official website](https://www.docker.com/). Make sure Docker is running when apply the IaC to AWS.
+4. **Docker Engine** <br /> 
+Last, you will need Docker Desktop to run on your PC. For download and documentation, please check the [official website](https://www.docker.com/). Make sure Docker is running when apply the IaC to AWS. If you are using a Linux Distribution you may run in an Permission Error - change the owner of the file /var/run/docker.sock to solve this one. 
 
 After following the above mentioned steps, you're good to go and run the terraform script.
 
@@ -59,3 +59,7 @@ It is build with the Flask Library and can be accessed with declaring a Port. Th
 The infrastructure after applying it to AWS will be like the following: <br /> 
 
 ![](infrastructure.png)
+
+
+### Tested OS
+The infrastructure was successfully tested with Windows 11 (WSL) and Fedora Linux 37 (Workstation Edition).
