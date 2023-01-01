@@ -1,86 +1,101 @@
 #Defining Variables:
 
+variable "name_project" {
+  description = "Defining the Name of the Project"
+  type        = string
+}
+
+variable "name_author" {
+  description = "Defining the Name of the Author"
+  type        = string
+}
+
+variable "environment" {
+  description = "Definition of the environment"
+  type        = string
+}
+
 variable "region" {
-    description = "Region where the Infrastructure will be deployed"
-    type = string
-    default = "eu-west-1"
+  description = "Region where the Infrastructure will be deployed"
+  type        = string
 }
 
 
 variable "vpc_cidr" {
-    description = "CIDR of the VPC"
-    type = string
-    default = "10.0.0.0/16"
+  description = "CIDR of the VPC"
+  type        = string
 }
 
+variable "count_av_zones" {
+  description = "Number of desired Availability Zones"
+  type        = number
+}
 
 variable "app_count" {
-  description = "Numbers of apps running at the same time"
-  type = number
-  default = 1
+  description = "Numbers of tasks running at the same time"
+  type        = number
+}
+
+variable "alb_name" {
+  description = "Name of the Load Balancer"
+  type        = string
 }
 
 
 variable "dockerfile_folder" {
   description = "Folder which contains the Dockerfile"
   type        = string
-  default = "../application"
 }
 
 
 variable "docker_image_tag" {
   description = "Tag for Dockerimage"
   type        = string
-  default     = "latest"
 }
 
+variable "docker_image_name" {
+  description = "Name for Dockerimage in Docker Engine"
+  type        = string
+}
 
-variable container_port {
+variable "container_port" {
   description = "Port for Flask Application"
-  type = number
-  default = 5000
+  type        = number
 }
 
 
 variable "cluster_name" {
-  default     = "ecs_terraform_fargate"
-  type        = string
   description = "The name of an ECS cluster"
+  type        = string
 }
 
 
 variable "cpu" {
   description = "CPU the Fargate task should run with."
-  type = number
-  default = 1024
+  type        = number
 }
 
 
 variable "memory" {
   description = "Memory the Fargate task should run with."
-  type = number
-  default = 2048
+  type        = number
 }
 
 
 variable "ecr_name" {
   description = "Name of the Repository."
-  type = string 
-  default = "mlrepository"
+  type        = string
 }
 
 
 variable "ecs_service" {
   description = "Name of ECS Service."
-  type = string 
-  default = "ml-service"
-  
+  type        = string
+
 }
 
 variable "container_name" {
   description = "Name of the container."
-  type = string 
-  default = "ml-app"
-  
+  type        = string
 }
 

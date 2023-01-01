@@ -1,12 +1,12 @@
 # Create Docker Image:
 resource "docker_image" "mlapp" {
-  name = "mlapplication"
+  name = var.docker_image_name
   build {
-    path = "../application"
+    path = var.dockerfile_folder #"../application"# 
   }
 }
- 
- 
+
+
 # Build and push Docker Image to AWS with Shellscript
 resource "null_resource" "build_and_push" {
 
