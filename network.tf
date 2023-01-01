@@ -1,0 +1,106 @@
+# Create VPC:
+resource "aws_vpc" "default" {
+  cidr_block = var.vpc_cidr
+}
+
+
+# Create Public Subnets:
+resource "aws_subnet" "public" {
+  count                   = var.count_av_zones
+  vpc_id                  = aws_vpc.default.id
+  cidr_block              = cidrsubnet(aws_vpc.default.cidr_block, 8, count.index)
+  availability_zone       = data.aws_availability_zones.available_zones.names[count.index]
+  map_public_ip_on_launch = false #changed
+  tags = {
+    Name = "CP Public Subnet-${count.index + 1}"
+  }
+}
+
+
+# Create Private Subnets:
+resource "aws_subnet" "private" {
+  count             = var.count_av_zones
+  cidr_block        = cidrsubnet(aws_vpc.default.cidr_block, 8, count.index + 2)
+  availability_zone = data.aws_availability_zones.available_zones.names[count.index]
+  vpc_id            = aws_vpc.default.id
+  tags = {
+    Name = "CP Private Subnet-${count.index + 1}"
+  }
+}
+
+
+# Create Internet Gateway:
+resource "aws_internet_gateway" "gateway" {
+  vpc_id = aws_vpc.default.id
+}
+
+
+# # Create a Route-Table to ensure Internet Acess:
+# resource "aws_route" "internet_access" {
+#   route_table_id         = aws_vpc.default.main_route_table_id
+#   destination_cidr_block = "0.0.0.0/0"
+#   gateway_id             = aws_internet_gateway.gateway.id
+# }
+# gelöscht - läuft noch 
+
+
+
+###############################################
+#added
+
+# create a Route Table for the VPC
+
+resource "aws_route_table" "public" {
+  vpc_id = aws_vpc.default.id
+
+  route {
+    cidr_block = "0.0.0.0/0"
+    gateway_id = aws_internet_gateway.gateway.id
+  }
+}
+
+resource "aws_route_table_association" "public" {
+  count          = var.count_av_zones
+  subnet_id      = element(aws_subnet.public.*.id, count.index)
+  route_table_id = element(aws_route_table.public.*.id, count.index)
+}
+
+#added
+###############################################
+
+# Create Elastic IP:
+resource "aws_eip" "gateway" {
+  count      = var.count_av_zones
+  vpc        = true
+  depends_on = [aws_internet_gateway.gateway]
+}
+
+
+# Create NAT-Gateway
+resource "aws_nat_gateway" "gateway" {
+  count         = var.count_av_zones
+  subnet_id     = element(aws_subnet.public.*.id, count.index)
+  allocation_id = element(aws_eip.gateway.*.id, count.index)
+}
+
+
+# Create Private Route-Table:
+resource "aws_route_table" "private" {
+  count  = var.count_av_zones
+  vpc_id = aws_vpc.default.id
+
+  route {
+    cidr_block     = "0.0.0.0/0"
+    nat_gateway_id = element(aws_nat_gateway.gateway.*.id, count.index)
+  }
+}
+
+
+# Create Route Table Association:
+resource "aws_route_table_association" "private" {
+  count          = var.count_av_zones
+  subnet_id      = element(aws_subnet.private.*.id, count.index)
+  route_table_id = element(aws_route_table.private.*.id, count.index)
+}
+
+
