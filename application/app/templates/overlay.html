@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Machine Learning Application for Cloud Programming</title>
+    </head>
+    
+    <body>
+
+
+        <p style="text-align:center"><span style="font-family:Comic Sans MS,cursive"><strong>Machine Learning Application for Cloud Programming</strong>
+
+        <form name="form", method="POST", style="text-align: center;", style="font-family:Comic Sans MS,cursive">
+            <br>
+            <span style="font-family:Comic Sans MS,cursive">Mass: <input type="number" step="0.1" min="0" name="mass", placeholder="Enter the mass of the fruit." required/>
+            <br><br>
+            Width: <input type="number" step="0.1" min="0" name="width", placeholder="Enter the width of the fruit." required/>
+            <br><br>
+            Height: <input type="number" step="0.1" min="0" name="height", placeholder="Enter the height of the fruit." required/>
+            <br><br>
+            <button><strong>Run</strong></button></span></p>
+
+        </form>
+        <p style="text-align: center;"><span style="font-family:Comic Sans MS,cursive"><span style="font-size:36px"><strong>Prediction: {{ output }}</p></span></strong></span>
+
+        <p style="text-align:center"><img src="{{url_for('static', filename='fruits.jpg')}}" /></p>
+        <p style="text-align:center"><span style="font-size:8px">Photo by <a href="https://unsplash.com/@juliazolotova?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Julia Zolotova</a> on <a href="https://unsplash.com/images/food/fruits?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span></p>
+    </body>
+</html>
+
