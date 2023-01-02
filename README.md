@@ -79,7 +79,7 @@ rm ~/.docker/config.json
 service docker start 
 ```
 
-* If you recieve the following error message when applying the infrastructure, your Docker Desktop Application is not running:
+* If you recieve the following error message when applying the infrastructure, your Docker Desktop Application is not running (Windows):
 ```
 null_resource.build_and_push (local-exec): The command 'docker' could not be found in this WSL 2 distro.
 ```
