@@ -40,12 +40,12 @@ terraform init
 
 If you want to see before hand what will be deployed, use the following command: 
 ```
-terraform plan
+terraform plan -var-file="variables.tfvars"
 ```
 
 To apply the infrastructure to AWS, use the following command:
 ```
-terraform apply
+terraform apply -var-file="variables.tfvars"
 ```
 
 ## The Machine Learning Application
