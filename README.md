@@ -61,7 +61,7 @@ It is build with the Flask Library and can be accessed with declaring a Port. Th
 The infrastructure after applying it to AWS will be like the following: <br /> 
 
 ![](infrastructure.png)
-
+For a better overview, the implemented auto-scaling policy is not mentioned in this picture.
 
 ## Tested OS
 The infrastructure was successfully tested with 
