@@ -76,3 +76,8 @@ service docker stop
 rm ~/.docker/config.json
 service docker start 
 ```
+
+If you get the following error message when applying the infrastructure, your Docker Desktop Application is not running:
+```
+null_resource.build_and_push (local-exec): The command 'docker' could not be found in this WSL 2 distro.
+```
