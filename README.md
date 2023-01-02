@@ -65,7 +65,7 @@ The infrastructure after applying it to AWS will be like the following: <br />
 
 ## Tested OS
 The infrastructure was successfully tested with 
-* Windows 11 with Debian for Windows Subsystem for Linux (WSL)
+* Windows 11 Home with Debian for Windows Subsystem for Linux (WSL)
 * Fedora Linux 37 (Workstation Edition)
 
 ### Troubleshooting
