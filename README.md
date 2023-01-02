@@ -33,7 +33,7 @@ aws configure
 Insert your AWS Access Key ID and AWS Secret Access Key. 
 Make sure Docker Desktop is running.
 
-Then run the following commands in the *infrastructure/* directory:
+Then run the following commands in the *infrastructure* directory:
 ```
 terraform init
 ```
