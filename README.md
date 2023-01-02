@@ -64,10 +64,12 @@ The infrastructure after applying it to AWS will be like the following: <br />
 
 
 ## Tested OS
-The infrastructure was successfully tested with Windows 11 (WSL) and Fedora Linux 37 (Workstation Edition).
+The infrastructure was successfully tested with 
+* Windows 11 with Debian for Windows Subsystem for Linux (WSL)
+* Fedora Linux 37 (Workstation Edition)
 
 ### Troubleshooting
-On Linux, you may run into some errors while setup the environment for Docker. What worked best for me is 
+* On Linux, you may run into some errors while setup the environment for Docker. What worked best for me is 
 1) Changing the owner of the docker.sock file.
 2) Generate a gpg key on [Docker Hub](https://hub.docker.com/).
 3) If you still run into an error, try the following commands: 
@@ -77,7 +79,7 @@ rm ~/.docker/config.json
 service docker start 
 ```
 
-If you recieve the following error message when applying the infrastructure, your Docker Desktop Application is not running:
+* If you recieve the following error message when applying the infrastructure, your Docker Desktop Application is not running:
 ```
 null_resource.build_and_push (local-exec): The command 'docker' could not be found in this WSL 2 distro.
 ```
