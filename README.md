@@ -79,8 +79,18 @@ service docker stop
 rm ~/.docker/config.json
 service docker start 
 ```
+* You may get a permission error on the **build.sh** file on Linux, solve it with the following command to make it executable:
+```
+chmod u+x build.sh
+```
 
-* If you recieve the following error message when applying the infrastructure, your Docker Desktop Application is not running (Windows):
+
+* Error message when Docker Engine is not running: I
+Windows:
 ```
 null_resource.build_and_push (local-exec): The command 'docker' could not be found in this WSL 2 distro.
+```
+Linux:
+```
+null_resource.build_and_push (local-exec): Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?
 ```
