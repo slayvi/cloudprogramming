@@ -72,7 +72,7 @@ The infrastructure was successfully tested with
 ### Troubleshooting
 #### Setup of Docker Desktop in Linux:
 On Linux, you may run into some errors while setup the environment for Docker. What worked best for me is 
-* Changing the owner of the docker.sock file.
+* Changing the owner of the file /var/run/docker.sock (root access required).
 * Generate a gpg key on [Docker Hub](https://hub.docker.com/).
 * If you still run into an error, try the following commands: 
 ``` 
