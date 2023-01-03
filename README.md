@@ -85,7 +85,8 @@ chmod u+x build.sh
 ```
 
 
-* Error message when Docker Engine is not running: <br />
+* You may get an error message when Docker Engine is not running: <br />
+
 **Windows:**
 ```
 null_resource.build_and_push (local-exec): The command 'docker' could not be found in this WSL 2 distro.
