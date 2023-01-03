@@ -79,7 +79,7 @@ service docker stop
 rm ~/.docker/config.json
 service docker start 
 ```
-* You may get a permission error on the **build.sh** file on Linux, solve it with the following command to make it executable:
+* You may get a permission error on the *build.sh* file on Linux, you can solve this with making the file executable:
 ```
 chmod u+x build.sh
 ```
