@@ -11,10 +11,9 @@ resource "aws_ecs_cluster" "main" {
 }
 
 
-
 # Create Fargate Task Definition:
 resource "aws_ecs_task_definition" "ml_task_def" {
-  family                   = var.container_name
+  family                   = "${var.container_name}-task"
   network_mode             = "awsvpc"
   requires_compatibilities = ["FARGATE"]
   cpu                      = var.cpu
@@ -31,7 +30,6 @@ resource "aws_ecs_task_definition" "ml_task_def" {
     }]
   }])
 }
-
 
 
 # Create ECS Service:

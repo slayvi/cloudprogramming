@@ -3,7 +3,7 @@ resource "aws_security_group" "alb" {
   name   = "${var.alb_name}-securtiy-group"
   vpc_id = aws_vpc.default.id
 
-  # Ingress TCP only:
+  # Inbound rules: Ingress TCP from customer IP only:
   ingress {
     protocol    = "tcp"
     from_port   = 80
@@ -11,7 +11,7 @@ resource "aws_security_group" "alb" {
     cidr_blocks = var.ip_customer
   }
 
-  # Egress to Container port:          
+  # Outbound rules: Egress to Container port:          
   egress {
     protocol    = "tcp"
     from_port   = var.container_port
@@ -26,7 +26,7 @@ resource "aws_security_group" "task" {
   name   = var.cluster_name
   vpc_id = aws_vpc.default.id
 
-  # Ingress only Container Port:
+  # Inbound rules: Ingress only from Container Port and ALB security group:
   ingress {
     protocol        = "tcp"
     from_port       = var.container_port
@@ -34,7 +34,7 @@ resource "aws_security_group" "task" {
     security_groups = [aws_security_group.alb.id]
   }
 
-  # Egress All:                
+  # Outbound rules: Egress All:                
   egress {
     protocol    = "-1"
     from_port   = 0

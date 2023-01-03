@@ -20,7 +20,7 @@ resource "aws_subnet" "public" {
 resource "aws_subnet" "private" {
   count             = var.count_av_zones
   vpc_id            = aws_vpc.default.id
-  cidr_block        = cidrsubnet(aws_vpc.default.cidr_block, 8, count.index + 2)
+  cidr_block        = cidrsubnet(aws_vpc.default.cidr_block, 8, count.index + var.count_av_zones)
   availability_zone = data.aws_availability_zones.available_zones.names[count.index]
   tags = {
     Name = "CP Private Subnet-${count.index + 1}"
@@ -34,7 +34,7 @@ resource "aws_internet_gateway" "gateway" {
 }
 
 
-# create Route Table for internet access:
+# create Route Table for internet access: 
 resource "aws_route_table" "public" {
   vpc_id = aws_vpc.default.id
 
@@ -45,7 +45,7 @@ resource "aws_route_table" "public" {
 }
 
 
-# Create Public Route Table Association:
+# Create Public Route Table Association: 
 resource "aws_route_table_association" "public" {
   count          = var.count_av_zones
   subnet_id      = element(aws_subnet.public.*.id, count.index)
@@ -53,9 +53,8 @@ resource "aws_route_table_association" "public" {
 }
 
 
-
 # Create Elastic IP:
-resource "aws_eip" "gateway" {
+resource "aws_eip" "natgateway" {
   count      = var.count_av_zones
   vpc        = true
   depends_on = [aws_internet_gateway.gateway]
@@ -63,10 +62,10 @@ resource "aws_eip" "gateway" {
 
 
 # Create NAT-Gateways:
-resource "aws_nat_gateway" "gateway" {
+resource "aws_nat_gateway" "natgateway" {
   count         = var.count_av_zones
   subnet_id     = element(aws_subnet.public.*.id, count.index)
-  allocation_id = element(aws_eip.gateway.*.id, count.index)
+  allocation_id = element(aws_eip.natgateway.*.id, count.index)
 }
 
 
@@ -77,7 +76,7 @@ resource "aws_route_table" "private" {
 
   route {
     cidr_block     = "0.0.0.0/0"
-    nat_gateway_id = element(aws_nat_gateway.gateway.*.id, count.index)
+    nat_gateway_id = element(aws_nat_gateway.natgateway.*.id, count.index)
   }
 }
 
@@ -88,5 +87,3 @@ resource "aws_route_table_association" "private" {
   subnet_id      = element(aws_subnet.private.*.id, count.index)
   route_table_id = element(aws_route_table.private.*.id, count.index)
 }
-
-

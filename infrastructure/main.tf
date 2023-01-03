@@ -27,7 +27,6 @@ provider "aws" {
 }
 
 
-
 # Build and push Docker Container to AWS with Bash script:
 resource "null_resource" "build_and_push" {
 
