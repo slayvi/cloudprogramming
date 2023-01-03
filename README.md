@@ -98,3 +98,4 @@ null_resource.build_and_push (local-exec): The command 'docker' could not be fou
 ```
 null_resource.build_and_push (local-exec): Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?
 ```
+In that case, simply start the Docker Desktop application.
