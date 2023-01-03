@@ -70,7 +70,8 @@ The infrastructure was successfully tested with
 * Fedora Linux 37 (Workstation Edition)
 
 ### Troubleshooting
-1) On Linux, you may run into some errors while setup the environment for Docker. What worked best for me is 
+#### Setup of Docker Desktop in Linux:
+On Linux, you may run into some errors while setup the environment for Docker. What worked best for me is 
 * Changing the owner of the docker.sock file.
 * Generate a gpg key on [Docker Hub](https://hub.docker.com/).
 * If you still run into an error, try the following commands: 
@@ -79,13 +80,15 @@ service docker stop
 rm ~/.docker/config.json
 service docker start 
 ```
-2) You may get a permission error on the *build.sh* file on Linux, you can solve this with making the file executable:
+#### Permission error on *build.sh* in Linux
+You may get a permission error on the *build.sh* file on Linux, you can solve this with making the file executable:
 ```
 chmod u+x build.sh
 ```
 
 
-3) You may get an error message when Docker Engine is not running: <br />
+#### Pushing Docker image to AWS
+You may get an error message when Docker Engine is not running: <br />
 
 **Windows:**
 ```
